@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { PurchaseRegistriesService } from '../../Services/purchase-registries.service';
+
 @Component({
   selector: 'app-purchaseregistry',
   templateUrl: './purchaseregistry.component.html',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PurchaseregistryComponent implements OnInit {
 
-  constructor() { }
+  constructor(private purchaseeegistryservice: PurchaseRegistriesService) { }
 
   ngOnInit(): void {
+    this.purchaseeegistryservice.getPurchaseRegistries().subscribe(
+      res => console.log(res),
+      err => console.log(err)
+    )
+
   }
 
 }

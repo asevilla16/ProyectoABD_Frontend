@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -12,6 +13,8 @@ import { InsumosregistryComponent } from './Components/insumosregistry/insumosre
 import { ProveedoresregistryComponent } from './Components/proveedoresregistry/proveedoresregistry.component';
 import { CategoriesregistriesComponent } from './Components/categoriesregistries/categoriesregistries.component';
 import { InvetarioregistriesComponent } from './Components/invetarioregistries/invetarioregistries.component';
+
+import { PurchaseRegistriesService } from './Services/purchase-registries.service';
 
 @NgModule({
   declarations: [
@@ -27,9 +30,12 @@ import { InvetarioregistriesComponent } from './Components/invetarioregistries/i
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule
     
   ],
-  providers: [],
+  providers: [
+    PurchaseRegistriesService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
