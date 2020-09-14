@@ -8,12 +8,20 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MasterNavigationComponent } from './Components/master-navigation/master-navigation.component';
 import { PurchaseregistryComponent } from './Components/purchaseregistry/purchaseregistry.component';
+import { InsumosregistryComponent } from './Components/insumosregistry/insumosregistry.component';
+import { ProveedoresregistryComponent } from './Components/proveedoresregistry/proveedoresregistry.component';
+import { CategoriesregistriesComponent } from './Components/categoriesregistries/categoriesregistries.component';
+import { InvetarioregistriesComponent } from './Components/invetarioregistries/invetarioregistries.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MasterNavigationComponent,
-    PurchaseregistryComponent
+    PurchaseregistryComponent,
+    InsumosregistryComponent,
+    ProveedoresregistryComponent,
+    CategoriesregistriesComponent,
+    InvetarioregistriesComponent
   ],
   imports: [
     BrowserModule,
