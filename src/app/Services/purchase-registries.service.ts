@@ -20,7 +20,7 @@ export class PurchaseRegistriesService {
   getPurchase(id: string){
     return this.http.get(`${this.API_URI}/detallecomprascontroller/${id}`);
   }
-
+  
   deletepurchase(id: string){
     return this.http.delete(`${this.API_URI}/detallecomprascontroller/${id}`);
   }
