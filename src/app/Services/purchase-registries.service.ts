@@ -9,6 +9,8 @@ import { Observable } from 'rxjs';
 export class PurchaseRegistriesService {
 
   API_URI = 'https://localhost:44342/api';
+  selectedPurchace: purchase;
+  
 
   constructor(private http: HttpClient) { }
 

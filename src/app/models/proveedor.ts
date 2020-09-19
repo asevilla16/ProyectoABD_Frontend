@@ -1,4 +1,4 @@
-export interface proveedor {
+export class proveedor {
     
     id?: number;
     nombre?: string;

@@ -1,6 +1,5 @@
 import { Component, OnInit, HostBinding } from '@angular/core';
-import { collectExternalReferences } from '@angular/compiler';
-import { stringify } from 'querystring';
+import { proveedor } from 'src/app/models/proveedor';
 
 import {ProveedoresService} from '../../Services/proveedores.service';
 
@@ -8,7 +7,8 @@ import {ProveedoresService} from '../../Services/proveedores.service';
 @Component({
   selector: 'app-proveedoresregistry',
   templateUrl: './proveedoresregistry.component.html',
-  styleUrls: ['./proveedoresregistry.component.css']
+  styleUrls: ['./proveedoresregistry.component.css'],
+  providers: [ProveedoresService]
 })
 export class ProveedoresregistryComponent implements OnInit {
 
@@ -19,10 +19,9 @@ export class ProveedoresregistryComponent implements OnInit {
   selectedProveedorID: number;
   nombreproveedor1: string;
 
-  constructor(private proveedoresservice: ProveedoresService) { }
+  constructor(public proveedoresservice: ProveedoresService) { }
 
   ngOnInit(): void {
-   
     this.proveedoresservice.getProveedoresAll().subscribe(
       res=>{
         console.log('res :>> ', res);
@@ -31,10 +30,9 @@ export class ProveedoresregistryComponent implements OnInit {
       err => console.log(err)
     )
 
-    
-
-
   }
+
+  
 
   fillProvForm(id: number){
     this.selectedProveedorID = id;
@@ -47,12 +45,13 @@ export class ProveedoresregistryComponent implements OnInit {
       },
       err =>console.log('err :>> ', err)
     )
-    this.nombreproveedor1 = this.oneproveedorSelected.name;
-
 
   }
 
+  AddProveedor(Proveedorform: proveedor){
 
+  }
+  
 
 
 }

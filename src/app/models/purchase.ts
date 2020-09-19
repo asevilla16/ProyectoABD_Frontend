@@ -1,4 +1,4 @@
-export interface purchase {
+export class purchase {
     proveedor?: string;
     IDOrdenCompra? : number;
     fechacompra?: Date;

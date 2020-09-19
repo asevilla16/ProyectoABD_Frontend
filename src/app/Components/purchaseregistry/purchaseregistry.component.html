@@ -1,14 +1,13 @@
 <div class="container p-3">
     <div class="row justify-content-center">
 <div class="col-4">
-<form>
+<form #registryPurch="ngForm" (ngSubmit)="AddRegistroCompra(registryPurch)">
 
 
     <div class="form-group">
         <label for="ProveedorSelect">Seleccione un Proveedor</label>
         <select class="form-control" id="ProveedorSelect" >
-          <option>  </option>
-          <option #defaultpreviewProveedor>Pricemart</option>
+         
           <option>Los Andes</option>
           
         </select>
@@ -75,7 +74,21 @@
         </select>
       </div>
 
-      <button type="submit" class="btn btn-primary ">Submit</button>
+      <div class="row">
+        <div class="col">  
+          <button type="submit" class="btn btn-primary ">Submit</button>  
+        </div>
+    
+        <div class="col">  
+            <button type="submit" class="btn btn-danger ">Delete</button> 
+          </div>
+
+        <!--  <div class="col">  
+            <button type="submit" class="btn btn-warning ">Edit</button>
+          </div>
+        -->
+    </div>
+   
 
     
   </form>

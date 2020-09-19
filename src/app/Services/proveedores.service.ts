@@ -9,8 +9,12 @@ import { Observable } from 'rxjs';
 export class ProveedoresService {
 
   API_URI = 'https://localhost:44342/api';
+  selectedproveedor: proveedor;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this.selectedproveedor = new proveedor();
+
+   }
 
     getProveedoresAll(){
       return this.http.get(`${this.API_URI}/Proveedors`)

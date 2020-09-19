@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { PurchaseRegistriesService } from '../../Services/purchase-registries.service';
 import { ProveedoresService } from '../../Services/proveedores.service';
+import { purchase } from 'src/app/models/purchase';
 
 @Component({
   selector: 'app-purchaseregistry',
@@ -66,11 +67,15 @@ export class PurchaseregistryComponent implements OnInit {
       },
       err => console.log(err)
     )*/
-   // this.PrecioUnitario1.value = this.puchasedetail.PrecioUnitario;
+    //PrecioUnitario1.value = this.puchasedetail.PrecioUnitario;
     
+    
+
   }
 
-  
+  AddRegistroCompra(registryPurch: purchase){
+      
+  }
   
 
 }
