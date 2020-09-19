@@ -5,7 +5,7 @@
 
     <div class="form-group ">
         <label for="NameProvider1">Nombre Proveedor</label>
-        <input type="text" class="form-control" id="NameProvider1" placeholder="Nombre">
+        <input type="text" class="form-control" id="NameProvider1" placeholder="Nombre" ng-model="nombreproveedor1.nombre">
        <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
       </div>
 
@@ -35,8 +35,11 @@
     <div class="form-group">
         <label for="exampleFormControlSelect2">Proveedores Registrados</label>
         <select multiple class="form-control" id="exampleFormControlSelect2">
-        <option>Holis</option>
-        
+            <option *ngFor="let allprov of allproveedores" (click)="fillProvForm(allprov.id)">
+                
+                {{allprov.nombre}} - Cel: {{allprov.telefono}}
+                
+            </option>
         </select>
     </div>
 

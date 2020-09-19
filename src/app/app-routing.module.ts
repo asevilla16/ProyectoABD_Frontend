@@ -1,5 +1,6 @@
 import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 import { PurchaseregistryComponent } from './Components/purchaseregistry/purchaseregistry.component';
 import { InsumosregistryComponent } from './Components/insumosregistry/insumosregistry.component';
@@ -37,7 +38,9 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    FormsModule,
+    RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

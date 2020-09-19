@@ -8,29 +8,35 @@ import { Observable } from 'rxjs';
 })
 export class PurchaseRegistriesService {
 
-  API_URI = 'https://localhost:44342';
+  API_URI = 'https://localhost:44342/api';
 
   constructor(private http: HttpClient) { }
 
 
-  getPurchaseRegistries(){
-    return this.http.get(`${this.API_URI}/detallecomprascontroller`)
+  getDetalleComprasAll(){
+    return this.http.get(`${this.API_URI}/detallecompras`)
+  }
+  getOrdenComprasAll(){
+    return this.http.get(`${this.API_URI}/OrdenCompras`)
   }
 
-  getPurchase(id: string){
-    return this.http.get(`${this.API_URI}/detallecomprascontroller/${id}`);
+  getDetalleCompraID(id: string){
+    return this.http.get(`${this.API_URI}/detallecompras/${id}`);
   }
-  
+  getOrdenCompraID(id: string){
+    return this.http.get(`${this.API_URI}/OrdenCompras/${id}`);
+  }
+
+
+
   deletepurchase(id: string){
-    return this.http.delete(`${this.API_URI}/detallecomprascontroller/${id}`);
+    return this.http.delete(`${this.API_URI}/OrdenCompras/${id}`);
   }
-
   savePurchaseRegistry(Purchase: purchase){
-    return this.http.post(`${this.API_URI}/detallecomprascontroller/`, Purchase);
+    return this.http.post(`${this.API_URI}/OrdenCompras/`, Purchase);
   }
-
   updatePurchase(id: string, updatedpurchase: purchase): Observable<purchase> {
-    return this.http.put(`${this.API_URI}/detallecomprascontroller/${id}`, updatedpurchase)
+    return this.http.put(`${this.API_URI}/OrdenCompras/${id}`, updatedpurchase)
   }
 
 }
