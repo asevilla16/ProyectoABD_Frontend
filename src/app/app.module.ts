@@ -18,6 +18,9 @@ import { CategoriesregistriesComponent } from './Components/categoriesregistries
 import { InvetarioregistriesComponent } from './Components/invetarioregistries/invetarioregistries.component';
 
 import { PurchaseRegistriesService } from './Services/purchase-registries.service';
+import { MasterNavitationSuperadminComponent } from './Components/master-navitation-superadmin/master-navitation-superadmin.component';
+import { EmpleadosRegistriesComponent } from './Components/empleados-registries/empleados-registries.component';
+import { ClientesRegistriesComponent } from './Components/clientes-registries/clientes-registries.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,10 @@ import { PurchaseRegistriesService } from './Services/purchase-registries.servic
     InsumosregistryComponent,
     ProveedoresregistryComponent,
     CategoriesregistriesComponent,
-    InvetarioregistriesComponent
+    InvetarioregistriesComponent,
+    MasterNavitationSuperadminComponent,
+    EmpleadosRegistriesComponent,
+    ClientesRegistriesComponent
   ],
   imports: [
     BrowserModule,

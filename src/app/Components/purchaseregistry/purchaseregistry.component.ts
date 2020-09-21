@@ -22,6 +22,7 @@ export class PurchaseregistryComponent implements OnInit {
   selectedPurchaceID: number;
   selectedOrderID: number;
   selectedProveedorID: number;
+  allproveedores: any =[];
   
   
 
@@ -35,6 +36,8 @@ export class PurchaseregistryComponent implements OnInit {
       },
       err => console.log(err)
     )
+
+    this.getproveedoreslist();
 
   }
 
@@ -60,21 +63,23 @@ export class PurchaseregistryComponent implements OnInit {
       },
       err => console.log(err)
     )
-/*
-    this.proveedoresservice.getProveedoresID(this.selectedProveedorID.toString()).subscribe(
-      res =>{
-        this.proveedoreselected = res;
-      },
-      err => console.log(err)
-    )*/
-    //PrecioUnitario1.value = this.puchasedetail.PrecioUnitario;
-    
+ 
     
 
   }
 
   AddRegistroCompra(registryPurch: purchase){
       
+  }
+
+  getproveedoreslist(){
+    this.proveedoresservice.getProveedoresAll().subscribe(
+      res=>{
+        console.log('res :>> ', res);
+        this.allproveedores = res;
+      }
+      
+    )
   }
   
 

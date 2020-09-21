@@ -1,8 +1,13 @@
 export class purchase {
+    
+    constructor(proveedor = " ", idOrdenCompra = 0, fechacompra= " ", fechaingreso = " ", autorizadopor=" "){
+
+    }
+    
     proveedor?: string;
     IDOrdenCompra? : number;
-    fechacompra?: Date;
-    fechaIngreso?: Date;
+    fechacompra?: string;
+    fechaIngreso?: string;
     autorizadopor?: string;
     totalfacturado?: number;
     SuministroInsumo?: string;

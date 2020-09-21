@@ -37,18 +37,19 @@
 
 </div>
 
-        <div class="col-4">
-
-            <div class="form-group">
-                <label for="exampleFormControlSelect2">Proveedores Registrados</label>
-                <select multiple class="form-control" id="exampleFormControlSelect2">
+        <div class="col-5" >
+          
+            <div class="form-group form-group-lg">
+                <label for="exampleFormControlSelect2" name="displayprvo">Proveedores Registrados</label>
+                <select multiple class="form-control "  id="exampleFormControlSelect2">
                     <option *ngFor="let allprov of allproveedores" (click)="editproveedor(allprov)">
-                        
+                      
                     Nombre: {{allprov.nombre}} - Cel: {{allprov.telefono}}
-                        
+                 
                     </option>
                 </select>
-            </div>
+              </div>
+            
 
 
         </div>
