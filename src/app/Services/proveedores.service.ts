@@ -10,6 +10,7 @@ export class ProveedoresService {
 
   API_URI = 'https://localhost:44342/api';
   selectedproveedor: proveedor;
+  proveedores: proveedor[];
 
   constructor(private http: HttpClient) {
     this.selectedproveedor = new proveedor();
@@ -24,15 +25,14 @@ export class ProveedoresService {
       return this.http.get(`${this.API_URI}/Proveedors/${id}`);
     }
 
-  
+    saveNewProvider(Provider: proveedor){
+      return this.http.post(`${this.API_URI}/proveedors/`, Provider);
+    }
+    updateProvider(updateprovider: proveedor): Observable<proveedor> {
+      return this.http.put(`${this.API_URI}/proveedors/${updateprovider.id}`, updateprovider)
+    }
 
     deleteprovider(id: string){
-      return this.http.delete(`${this.API_URI}/Proveedors/${id}`);
-    }
-    saveNewProvider(Provider: proveedor){
-      return this.http.post(`${this.API_URI}/Proveedors/`, Provider);
-    }
-    updateProvider(id: string, updateprovider: proveedor): Observable<proveedor> {
-      return this.http.put(`${this.API_URI}/OrdenCompras/${id}`, updateprovider)
+      return this.http.delete(`${this.API_URI}/proveedors/${id}`);
     }
 }

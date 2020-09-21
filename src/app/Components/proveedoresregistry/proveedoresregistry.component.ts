@@ -1,9 +1,10 @@
 import { Component, OnInit, HostBinding } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { proveedor } from 'src/app/models/proveedor';
 
 import {ProveedoresService} from '../../Services/proveedores.service';
 
-
+declare var M: any;
 @Component({
   selector: 'app-proveedoresregistry',
   templateUrl: './proveedoresregistry.component.html',
@@ -22,6 +23,13 @@ export class ProveedoresregistryComponent implements OnInit {
   constructor(public proveedoresservice: ProveedoresService) { }
 
   ngOnInit(): void {
+    
+    this.getallProveedore();
+
+  }
+
+  getallProveedore(){
+
     this.proveedoresservice.getProveedoresAll().subscribe(
       res=>{
         console.log('res :>> ', res);
@@ -29,28 +37,38 @@ export class ProveedoresregistryComponent implements OnInit {
       },
       err => console.log(err)
     )
-
   }
+
+  AddProveedor(form: NgForm){
+   if(form.value.id){
+     this.proveedoresservice.updateProvider(form.value).subscribe(
+       res=>{
+         console.log('res :>> ', res);
+       }
+     )
+   }
+   else{
+    console.log('form.value :>> ', form.value);
+    this.proveedoresservice.saveNewProvider(form.value).subscribe(
+      res =>{
+        console.log('res :>> ', res);
+      }
+    )
+    if(form){
+      form.reset();
+      this.proveedoresservice.selectedproveedor = new proveedor();
+      M.toast({html: 'Proveedor Agregado'})
+    }
+    
+  }
+}
 
   
 
-  fillProvForm(id: number){
-    this.selectedProveedorID = id;
-    
-
-    this.proveedoresservice.getProveedoresID(this.selectedProveedorID.toString()).subscribe(
-      res=>{
-        console.log('res :>> ', res);
-        this.oneproveedorSelected = res;
-      },
-      err =>console.log('err :>> ', err)
-    )
-
-  }
-
-  AddProveedor(Proveedorform: proveedor){
-
-  }
+editproveedor(provider: proveedor){
+  this.proveedoresservice.selectedproveedor = provider;
+  //this.proveedoresservice.updateProvider()
+}
   
 
 
