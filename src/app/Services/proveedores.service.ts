@@ -26,13 +26,13 @@ export class ProveedoresService {
     }
 
     saveNewProvider(Provider: proveedor){
-      return this.http.post(`${this.API_URI}/proveedors/`, Provider);
+      return this.http.post(`${this.API_URI}/Proveedors/`, Provider);
     }
     updateProvider(updateprovider: proveedor): Observable<proveedor> {
-      return this.http.put(`${this.API_URI}/proveedors/${updateprovider.id}`, updateprovider)
+      return this.http.put(`${this.API_URI}/Proveedors/${updateprovider.id}`, updateprovider)
     }
 
     deleteprovider(id: string){
-      return this.http.delete(`${this.API_URI}/proveedors/${id}`);
+      return this.http.delete(`${this.API_URI}/Proveedors/${id}`);
     }
 }

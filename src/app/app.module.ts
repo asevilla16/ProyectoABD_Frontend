@@ -22,6 +22,7 @@ import { MasterNavitationSuperadminComponent } from './Components/master-navitat
 import { EmpleadosRegistriesComponent } from './Components/empleados-registries/empleados-registries.component';
 import { ClientesRegistriesComponent } from './Components/clientes-registries/clientes-registries.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +34,8 @@ import { ClientesRegistriesComponent } from './Components/clientes-registries/cl
     InvetarioregistriesComponent,
     MasterNavitationSuperadminComponent,
     EmpleadosRegistriesComponent,
-    ClientesRegistriesComponent
+    ClientesRegistriesComponent,
+    
   ],
   imports: [
     BrowserModule,

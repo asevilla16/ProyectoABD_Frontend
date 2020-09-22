@@ -12,6 +12,7 @@ import { MasterNavigationComponent } from './Components/master-navigation/master
 import { EmpleadosRegistriesComponent } from './Components/empleados-registries/empleados-registries.component';
 import { ClientesRegistriesComponent } from './Components/clientes-registries/clientes-registries.component';
 
+
 const routes: Routes = [
   {
     path: '',
@@ -24,9 +25,10 @@ const routes: Routes = [
     children: [
       {path: 'purchase-registry', component: PurchaseregistryComponent},
       {path: 'insumosregistry', component: InsumosregistryComponent},
-      {path: 'proveedoresregistry', component: ProveedoresregistryComponent},
+      {path: 'proveedoresregistry', component: ProveedoresregistryComponent,},
       {path: 'categoriesregistry',component: CategoriesregistriesComponent},
-      {path: 'invetarioregistry', component: InvetarioregistriesComponent}
+      {path: 'invetarioregistry', component: InvetarioregistriesComponent},
+      
      ]
   },
   {

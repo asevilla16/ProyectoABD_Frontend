@@ -14,7 +14,9 @@ declare var M: any;
 export class ProveedoresregistryComponent implements OnInit {
 
   @HostBinding('class') classes = 'row';
-  
+  showaddform: boolean;
+  showedifform: boolean = true;
+
   allproveedores: any = [];
   oneproveedorSelected: any = [];
   selectedProveedorID: number;
@@ -39,35 +41,54 @@ export class ProveedoresregistryComponent implements OnInit {
     )
   }
 
-  AddProveedor(form: NgForm){
-   if(form.value.id){
+EditProveedor(form: NgForm){
+   
      this.proveedoresservice.updateProvider(form.value).subscribe(
        res=>{
          console.log('res :>> ', res);
        }
      )
    }
-   else{
-    console.log('form.value :>> ', form.value);
-    this.proveedoresservice.saveNewProvider(form.value).subscribe(
-      res =>{
-        console.log('res :>> ', res);
-      }
-    )
-    if(form){
-      form.reset();
-      this.proveedoresservice.selectedproveedor = new proveedor();
-      M.toast({html: 'Proveedor Agregado'})
+
+AddNewProveedor(form: NgForm){
+
+  this.proveedoresservice.saveNewProvider(form.value).subscribe(
+    res=>{
+      console.log('res :>> ', res);
     }
-    
-  }
+  )
+  M.toast({html: 'Proveedor Agregado'})
+  this.getallProveedore();
+  form.reset();
 }
 
   
 
-editproveedor(provider: proveedor){
+hiddeeditform(){
+  this.showaddform= true;
+  this.showedifform=false;
+  
+}
+
+showeditform(){
+  this.showaddform= false;
+  this.showedifform=true;
+  
+}
+
+addtoform(provider: proveedor){
   this.proveedoresservice.selectedproveedor = provider;
-  //this.proveedoresservice.updateProvider()
+
+}
+
+deleteproveedor(form: NgForm, id: string){
+
+  this.proveedoresservice.deleteprovider(id).subscribe(
+    res=>console.log('res :>> ', res)
+  )
+  M.toast({html: 'Proveedor Eliminado'})
+  this.getallProveedore();
+  form.reset();
 }
   
 
