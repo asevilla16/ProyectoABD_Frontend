@@ -1,45 +1,103 @@
 <div class="container p-3">
     <div class="row justify-content-center">
 <div class="col-4">
-<form>
+
+
+
+<form *ngIf="showedifform" #insumoform="ngForm" (ngSubmit)="Editinsumo(insumoform)">
+
+    <input type="hidden" name="id" #idinsumo="ngModel" [(ngModel)]="insumoservice.selectedinsumo.id">
 
     <div class="form-group ">
         <label for="InsumoEntry1">Nombre Insumo</label>
-        <input type="text" class="form-control" id="InsumoEntry1" placeholder="Nombre">
+        <input type="text" class="form-control" id="InsumoEntry1" placeholder="Nombre" name="nombres" #nombreInsumo="ngModel" [(ngModel)]="insumoservice.selectedinsumo.nombres">
        <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
       </div>
 
 
-    <div class="form-group">
-        <label for="ProveedorSelect">Seleccione un Proveedor</label>
-        <select class="form-control" id="ProveedorSelect">
-          <option>Pricemart</option>
-          <option>Los Andes</option> 
-        </select>
-
-    </div>
-
-      <div class="form-group">
-        <label for="Category1">Seleccione una Categoria</label>
-        <select class="form-control" id="Category1">
-          <option>Leche</option>
-          <option>Plasticos</option>
-          
-        </select>
+      <div class="form-group ">
+        <label for="InsumoEntry1">Ingrese Codigo Categoria</label>
+        <input type="text" class="form-control" placeholder="Categoria" name="idcategoria" #categoriaInsumo="ngModel" [(ngModel)]="insumoservice.selectedinsumo.idcategoria">
+       <small id="emailHelp" class="form-text text-muted">Use unicamente los codigos previamente registrados.</small>
       </div>
 
       <div class="form-group">
         <label for="Descripcion1">Descripcion</label>
-        <input type="text" class="form-control" id="Descripcion1" placeholder="Descripcion">
+        <input type="text" class="form-control" placeholder="Descripcion" name="descripcion" #descripcionInsumo="ngModel" [(ngModel)]="insumoservice.selectedinsumo.descripcion">
+     <!--   <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+      </div>
+
+      <div class="form-group">
+        <label for="UnidadMed">Unidad de Medida</label>
+        <input type="text" class="form-control" placeholder="Unidad Medida" name="unidadMedidaVenta" #unidadMedidaVentaInsumo="ngModel" [(ngModel)]="insumoservice.selectedinsumo.unidadMedidaVenta">
+     <!--   <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+      </div>
+
+
+          <div class="form-group">
+            <label for="PrecioVenta">Precio Venta</label>
+            <input type="money" class="form-control" placeholder="Precio Venta" name="precioVenta" #precioVentaInsumo="ngModel" [(ngModel)]="insumoservice.selectedinsumo.precioVenta">
+           <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+          </div>
+
+    
+        <div class="form-group">
+            <label for="FechaCompra1">Fecha de Compra</label>
+            <input type="text" class="form-control" name="fechacaducidad" #fechacaducidadInsumo="ngModel" [(ngModel)]="insumoservice.selectedinsumo.fechacaducidad">  
+        </div>
+
+        <input type="hidden" name="idcategoriaNavigation" #idcategoriaNavigation="ngModel" [(ngModel)]="insumoservice.selectedinsumo.idcategoriaNavigation">
+
+        <input type="hidden" name="detalleCompra" #detalleCompra="ngModel" [(ngModel)]="insumoservice.selectedinsumo.detalleCompra">
+
+        <input type="hidden" name="detalleProducto" #detalleProducto="ngModel" [(ngModel)]="insumoservice.selectedinsumo.detalleProducto">
+
+        <input type="hidden" name="detalleVenta" #detalleVenta="ngModel" [(ngModel)]="insumoservice.selectedinsumo.detalleVenta">
+
+        <input type="hidden" name="inventario" #inventario="ngModel" [(ngModel)]="insumoservice.selectedinsumo.inventario">
+
+
+    
+
+      <button type="submit" class="btn btn-primary ">Submit</button>
+
+    
+  </form>
+
+
+  <!--Form 2 Cambiar el dropdown solo para edit-->
+  <form *ngIf="showaddform" #insumoaddform="ngForm" (ngSubmit)="addnewinsumo(insumoform)">
+
+    <input type="hidden" name="id" #idinsumo="ngModel" [(ngModel)]="insumoservice.selectedinsumo.id">
+
+    <div class="form-group ">
+        <label for="InsumoEntry1">Nombre Insumo</label>
+        <input type="text" class="form-control" id="InsumoEntry1" placeholder="Nombre" name="nombres" #nombreInsumo="ngModel" [(ngModel)]="insumoservice.selectedinsumo.nombres">
+       <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+      </div>
+
+
+      <div class="form-group ">
+        <label for="InsumoEntry1">Ingrese Codigo Categoria</label>
+        <input type="text" class="form-control" placeholder="Categoria" name="idcategoria" #categoriaInsumo="ngModel" [(ngModel)]="insumoservice.selectedinsumo.idcategoria">
+       <small id="emailHelp" class="form-text text-muted">Use unicamente los codigos previamente registrados.</small>
+      </div>
+
+      <div class="form-group">
+        <label for="Descripcion1">Descripcion</label>
+        <input type="text" class="form-control" id="Descripcion1" placeholder="Descripcion" name="descripcion" #descripcionInsumo="ngModel" [(ngModel)]="insumoservice.selectedinsumo.descripcion">
      <!--   <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
       </div>
 
       <div class="form-group">
         <label for="UnidadMedidaVenta1">Seleccione Unidad de Medida:</label>
-        <select class="form-control" id="UnidadMedidaVenta1">
-          <option>Kgs.</option>
+        <select class="form-control">
+          <option name="unidadMedidaVenta" #unidadMedidaVentaInsumo="ngModel" [(ngModel)]="insumoservice.selectedinsumo.unidadMedidaVenta">{{unidadMedidaVentaInsumo}}</option>
           <option>Lbs.</option>
-
+          <option>Fl. Oz</option>
+          <option>Litros</option>
+          <option>Onz.</option>
+          <option>Kgs.</option>
           </select>
         </div>
 
@@ -55,6 +113,16 @@
             <input type="date" class="form-control" id="FechaCompra1">  
         </div>
 
+        <input type="hidden" name="idcategoriaNavigation" #idcategoriaNavigation="ngModel" [(ngModel)]="insumoservice.selectedinsumo.idcategoriaNavigation">
+
+        <input type="hidden" name="detalleCompra" #detalleCompra="ngModel" [(ngModel)]="insumoservice.selectedinsumo.detalleCompra">
+
+        <input type="hidden" name="detalleProducto" #detalleProducto="ngModel" [(ngModel)]="insumoservice.selectedinsumo.detalleProducto">
+
+        <input type="hidden" name="detalleVenta" #detalleVenta="ngModel" [(ngModel)]="insumoservice.selectedinsumo.detalleVenta">
+
+        <input type="hidden" name="inventario" #inventario="ngModel" [(ngModel)]="insumoservice.selectedinsumo.inventario">
+
 
     
 
@@ -65,18 +133,37 @@
 
 </div>
 
+
 <div class="col-4">
 
-    <div class="form-group">
-        <label for="exampleFormControlSelect2">Insumos Registrados</label>
-        <select multiple class="form-control" id="exampleFormControlSelect2">
-        <option>Holis</option>
-        
-        </select>
-    </div>
+  <div class="row">
+      <div class="form-group">
+          <label for="insumosregistrados">Insumos Registradas</label>
+          <select multiple class="form-control" id="insumosregistrados">
+          <option *ngFor="let insum of allinsumos" (click)="addtoform(insum)">
+            {{insum.id}} - {{insum.nombres}}
+          </option> 
+          </select>
+      </div>
+</div>
 
+<div class="row">
+    
+        <div class="form-group">
+          <label for="CategoriasReg">Categorias Registradas</label>
+          <select multiple class="form-control" id="CategoriasReg">
+          <option *ngFor="let cat of allcategories">
+            {{cat.id}} - {{cat.nombre}}
+          </option>
+          
+          </select>
+      </div>
+
+
+  </div>
 
 </div>
+
 </div>
 </div>
 
