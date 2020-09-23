@@ -26,16 +26,6 @@ import { ClientesRegistriesComponent } from './Components/clientes-registries/cl
 @NgModule({
   declarations: [
     AppComponent,
-    UserComponent,
-    HomepageComponent,
-    SuperAdminDashboardComponent,
-    AdminMastersComponent
-    ],
-
-
-@NgModule({
-  declarations: [
-    AppComponent,
     MasterNavigationComponent,
     PurchaseregistryComponent,
     InsumosregistryComponent,
@@ -45,13 +35,18 @@ import { ClientesRegistriesComponent } from './Components/clientes-registries/cl
     MasterNavitationSuperadminComponent,
     EmpleadosRegistriesComponent,
     ClientesRegistriesComponent,
+    AppComponent,
+    UserComponent,
+    HomepageComponent,
+    SuperAdminDashboardComponent,
+    AdminMastersComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
-    HttpClientModule, 
+    HttpClientModule
   ],
   exports: [
     UserComponent,
