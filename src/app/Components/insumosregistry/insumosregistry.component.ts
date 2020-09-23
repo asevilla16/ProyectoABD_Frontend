@@ -1,5 +1,4 @@
 import { Component, OnInit, HostBinding } from '@angular/core';
-import { fromEventPattern } from 'rxjs';
 import {insumo} from '../../models/insumo';
 import { InsumosService } from '../../Services/insumos.service';
 import {CategoriasService} from '../../Services/categorias.service';
@@ -16,6 +15,7 @@ export class InsumosregistryComponent implements OnInit {
   @HostBinding('class') classes = 'row';
   showaddform: boolean;
   showedifform: boolean = true;
+  insumovacio: insumo;
 
   allinsumos: any = [];
   allcategories: any = [];
@@ -51,6 +51,9 @@ export class InsumosregistryComponent implements OnInit {
   hiddeeditform(){
     this.showaddform= true;
     this.showedifform=false;
+
+    
+   // this.insumoservice.selectedinsumo = this.insumovacio;
     
   }
   
@@ -60,7 +63,15 @@ export class InsumosregistryComponent implements OnInit {
     
   }
 
-  Editinsumo(insumoform){
+  Editinsumo(form: NgForm){
+    console.log('form :>> ', form.value);
+    this.insumoservice.updateInsumo(form.value).subscribe(
+      res=>{
+        console.log('res :>> ', res);
+      }
+    )
+
+    form.reset();
 
   }
 
@@ -68,8 +79,27 @@ export class InsumosregistryComponent implements OnInit {
     this.insumoservice.selectedinsumo = insumo;
   }
 
-  addnewinsumo(insumoform){
+  addnewinsumo(form2: NgForm){
+    console.log('form :>> ', form2.value);
+    this.insumoservice.saveNewInsumos(form2.value).subscribe(
+      res=>{
+        console.log('res :>> ', res);
+      },
+      
+    )
+    form2.reset();
+    
+  }
 
+  deleteinsumo(id: string, form3: NgForm){
+    this.insumoservice.deleteInsumo(id).subscribe(
+      res=>{
+        console.log('res :>> ', res);
+      }
+    )
+
+    this.getallinsumos();
+    form3.reset();
     
   }
 

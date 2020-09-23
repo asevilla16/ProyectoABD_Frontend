@@ -24,7 +24,7 @@ export class InsumosService {
   }
 
   saveNewInsumos(insumo: insumo){
-    return this.http.post(`${this.API_URI}/insumos/`, insumo);
+    return this.http.post(`${this.API_URI}/insumos`, insumo);
   }
   updateInsumo(insumo: insumo): Observable<insumo> {
     return this.http.put(`${this.API_URI}/insumos/${insumo.id}`, insumo)

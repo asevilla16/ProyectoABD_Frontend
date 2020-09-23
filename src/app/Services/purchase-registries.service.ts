@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { purchase } from '../models/purchase';
+import { OrdenCompra } from '../models/purchase';
+import { detalleOrden } from '../models/purchase';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -9,10 +10,14 @@ import { Observable } from 'rxjs';
 export class PurchaseRegistriesService {
 
   API_URI = 'https://localhost:44342/api';
-  selectedPurchace: purchase;
+  selectedPurchace: OrdenCompra;
+  selectedPurchacedetail: detalleOrden;
   
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { 
+    this.selectedPurchace =  new OrdenCompra();
+    this.selectedPurchacedetail =  new detalleOrden();
+  }
 
 
   getDetalleComprasAll(){
@@ -34,11 +39,25 @@ export class PurchaseRegistriesService {
   deletepurchase(id: string){
     return this.http.delete(`${this.API_URI}/OrdenCompras/${id}`);
   }
-  savePurchaseRegistry(Purchase: purchase){
-    return this.http.post(`${this.API_URI}/OrdenCompras/`, Purchase);
-  }
-  updatePurchase(id: string, updatedpurchase: purchase): Observable<purchase> {
-    return this.http.put(`${this.API_URI}/OrdenCompras/${id}`, updatedpurchase)
+  deletepurchasedetail(id: string){
+    return this.http.delete(`${this.API_URI}/detallecompras/${id}`);
   }
 
+
+  savePurchaseRegistry(Purchase: OrdenCompra){
+    return this.http.post(`${this.API_URI}/OrdenCompras/`, Purchase);
+  }
+  savePurchaseDetail(detalle: detalleOrden){
+    return this.http.post(`${this.API_URI}/detallecompras/`, detalle);
+  }
+
+
+  updatePurchase(updatedpurchase: OrdenCompra): Observable<OrdenCompra> {
+    return this.http.put(`${this.API_URI}/OrdenCompras/${updatedpurchase.id}`, updatedpurchase)
+  }
+  updatePurchasedetail(updatedpurchasedetail: detalleOrden): Observable<detalleOrden> {
+    return this.http.put(`${this.API_URI}/detallecompras/${updatedpurchasedetail.id}`, updatedpurchasedetail)
+  }
+
+  
 }

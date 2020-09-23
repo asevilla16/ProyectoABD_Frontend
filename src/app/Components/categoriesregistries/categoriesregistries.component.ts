@@ -72,6 +72,7 @@ export class CategoriesregistriesComponent implements OnInit {
   }
 
   addnewCategorias(form: NgForm){
+   console.log('form :>> ', form.value);
     this.catservices.saveNewCategorias(form.value).subscribe(
       res=>{
         console.log('res :>> ', res);

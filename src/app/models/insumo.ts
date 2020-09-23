@@ -1,10 +1,10 @@
 export class insumo{
 
     
-    constructor( id=0, nombre=" ", idcategoria=0, descripcion=" ",unidadmedidaventa=" ", precioventa=0, fechacaducidad= new Date("2015-03-25") ,unidadMedidaAlmacenamiento=" " ){
+    constructor( id=0, nombres=" ", idcategoria=0, descripcion=" ",unidadmedidaventa=" ", precioventa=0, fechacaducidad= new Date("2015-03-25") ,unidadMedidaAlmacenamiento=" " ){
 
         this.id=id;
-        this.nombre = nombre;
+        this.nombres = nombres;
         this.idcategoria= idcategoria;
         this.descripcion = descripcion;
         this.UnidadMedidaVenta = unidadmedidaventa;
@@ -15,7 +15,7 @@ export class insumo{
     }
 
     id?: number;
-    nombre?: string;
+    nombres?: string;
     idcategoria?: number;
     descripcion?: string;
     UnidadMedidaVenta?: string;

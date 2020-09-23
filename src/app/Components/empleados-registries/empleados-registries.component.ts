@@ -62,6 +62,7 @@ export class EmpleadosRegistriesComponent implements OnInit {
 
   addtoform(emps: empleado){
     this.employeeserv.selectedemployee = emps;
+    console.log('emps :>> ', emps);
   }
 
   hiddeeditform(){

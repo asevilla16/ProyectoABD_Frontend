@@ -51,7 +51,7 @@ EditProveedor(form: NgForm){
    }
 
 AddNewProveedor(form: NgForm){
-
+  console.log('form :>> ', form.value);
   this.proveedoresservice.saveNewProvider(form.value).subscribe(
     res=>{
       console.log('res :>> ', res);
